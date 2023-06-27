@@ -20,14 +20,14 @@ class SuperJobAPI(AbstractAPI):
         Метод для получения вакансий по ключевому слову
         """
         if count > 100:
-            pages = int(count / 10) + 1
+            pages = int(count / 100) + 1
         else:
             pages = 1
         endpoint = 'vacancies/?keyword='
         url = f'{self.url}{endpoint}{keyword}'
         params = {'keyword': keyword,
                   'page': 0,
-                  'count': count}
+                  'count': pages}
         response = []
         for page in range(pages):
             params.update({'page': page})

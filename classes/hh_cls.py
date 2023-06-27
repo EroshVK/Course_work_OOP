@@ -17,14 +17,14 @@ class HeadHunterAPI(AbstractAPI):
         Метод для получения вакансий по ключевому слову
         """
         if count > 100:
-            pages = int(count / 10) + 1
+            pages = int(count / 100) + 1
         else:
             pages = 1
         endpoint = 'vacancies?text='
         url = f'{self.url}{endpoint}{keyword}'
         params = {'keyword': keyword,
                   'page': 0,
-                  'per_page': count}
+                  'per_page': pages}
         response = []
         for page in range(pages):
             params.update({'page': page})
