@@ -65,7 +65,7 @@ class JSONHandler(Handler):
         except FileNotFoundError:
             return []
         for item in file_data:
-            if keyword.lower() in item['name'].lower():
+            if keyword.lower() in item['title'].lower():
                 found_vacancies.append(item)
         return found_vacancies
 
