@@ -6,7 +6,7 @@ class AbstractAPI(ABC):
     Абстрактный класс для работы с API
     """
     @abstractmethod
-    def get_vacancies(self, keyword, count):
+    def get_vacancies(self, keyword, pages):
         pass
 
     @abstractmethod

@@ -12,19 +12,15 @@ class HeadHunterAPI(AbstractAPI):
         self.url = 'https://api.hh.ru/'
         self.header = {'User-Agent': 'user_agent_hh'}
 
-    def get_vacancies(self, keyword, count):
+    def get_vacancies(self, keyword, pages):
         """
         Метод для получения вакансий по ключевому слову
         """
-        if count > 100:
-            pages = int(count / 100) + 1
-        else:
-            pages = 1
         endpoint = 'vacancies?text='
         url = f'{self.url}{endpoint}{keyword}'
         params = {'keyword': keyword,
                   'page': 0,
-                  'per_page': pages}
+                  'per_page': 100}
         response = []
         for page in range(pages):
             params.update({'page': page})

@@ -15,19 +15,15 @@ class SuperJobAPI(AbstractAPI):
         self.url = 'https://api.superjob.ru/2.0/'
         self.header = {'X-Api-App-Id': self.sj_api_key}
 
-    def get_vacancies(self, keyword, count):
+    def get_vacancies(self, keyword, pages):
         """
         Метод для получения вакансий по ключевому слову
         """
-        if count > 100:
-            pages = int(count / 100) + 1
-        else:
-            pages = 1
         endpoint = 'vacancies/?keyword='
         url = f'{self.url}{endpoint}{keyword}'
         params = {'keyword': keyword,
                   'page': 0,
-                  'count': pages}
+                  'count': 100}
         response = []
         for page in range(pages):
             params.update({'page': page})
